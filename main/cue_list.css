@@ -1,0 +1,116 @@
+.list {
+    flex-grow: 100;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+.cues-header {
+    height: 30px;
+    width: 100%;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid black 1px;
+    border-top: solid black 1px;
+}
+.cue-header {
+    font-family: Roboto;
+    width: 100px;
+    border-left: solid black 1px;
+}
+#cue {
+    border-left: solid transparent 1px;
+    flex-shrink: 5;
+    width: 100px;
+}
+#description {
+    flex-grow: 8;
+    width: 100px;
+}
+#cue-type {
+    flex-grow: 1;
+    width: 100px;
+}
+#state {
+    flex-grow: 1;
+    width: 100px;
+}
+#activation {
+    flex-grow: 1;
+    width: 100px;
+}
+#file {
+    flex-grow: 3;
+    width: 100px;
+}
+p {
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.list-cues {
+    height: 25px;
+    width: 100%;
+    margin: 0;
+    background-color: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid black 1px;
+}
+
+.cue-label {
+    font-family: Roboto;
+    width: 100px;
+    border-left: solid black 1px;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+.s1 {
+    border-left: solid transparent 1px;
+    flex-shrink: 5;
+    width: 100px;
+}
+.s2 {
+    flex-grow: 8;
+    width: 100px;
+}
+.s3 {
+    flex-grow: 1;
+    width: 100px;
+}
+.s4 {
+    flex-grow: 1;
+    width: 100px;
+}
+.s5 {
+    flex-grow: 1;
+    width: 100px;
+}
+.s6 {
+    flex-grow: 3;
+    width: 100px;
+}
+.cue-label>p {
+    font-size: 15px;
+    margin: 0;
+    font-weight: 300;
+    text-align: center;
+    align-self: center;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Medium.ttf');
+}
+@font-face {
+    font-family: 'Delicious Handrawn';
+    src: url('../fonts/DeliciousHandrawn-Regular.ttf');
+}

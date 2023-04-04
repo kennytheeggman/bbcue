@@ -1,0 +1,65 @@
+
+.header.headers {
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ccc;
+    margin: 0;
+}
+
+h1.headers {
+    font-family: 'Roboto';
+    font-weight: 200;
+    font-size: xx-large;
+    color: black;
+    user-select: none;
+}
+.icon.headers {
+    background-color: #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.cue-control.headers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    width: 300px;
+}
+
+.header-controls.headers {
+    background-color: #aaa;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    width: 60px;
+    margin: 5px;
+    font-family: Roboto;
+    cursor: pointer;
+    text-align: center;
+}
+.header-controls:hover.headers {
+    background-color: #999;
+}
+#go.headers {
+    flex-grow: 2;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Medium.ttf');
+}
+@font-face {
+    font-family: 'Delicious Handrawn';
+    src: url('../fonts/DeliciousHandrawn-Regular.ttf');
+}

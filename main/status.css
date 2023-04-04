@@ -1,0 +1,6 @@
+.status {
+    height: 50vh;
+    width: 100%;
+    background-color: #ccc;
+    justify-self: flex-end;
+}
