@@ -21,6 +21,6 @@ function getScrollbarWidth() {
   
   }
 
-console.log(getScrollbarWidth)
+console.log(getScrollbarWidth())
 
-document.querySelectorAll(".cues-header")[0].style.paddingRight = getScrollbarWidth() + "px"
+document.getElementsByClassName("cues-header")[0].style.paddingLeft = getScrollbarWidth() + "px"

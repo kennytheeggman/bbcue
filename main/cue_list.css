@@ -17,6 +17,10 @@
     border-bottom: solid black 1px;
     border-top: solid black 1px;
 }
+.cues {
+    padding-right: 17px;
+    background-color: #ccc;
+}
 .cue-header {
     font-family: Roboto;
     width: 100px;
@@ -46,6 +50,7 @@
 #file {
     flex-grow: 3;
     width: 100px;
+    border-right: 1px solid black
 }
 p {
     text-align: center;
@@ -97,6 +102,7 @@ p {
 .s6 {
     flex-grow: 3;
     width: 100px;
+    border-right: 1px solid black;
 }
 .cue-label>p {
     font-size: 15px;
