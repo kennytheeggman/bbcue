@@ -2,7 +2,7 @@
     flex-grow: 100;
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: overlay;
 }
 .cues-header {
     height: 30px;
@@ -18,7 +18,6 @@
     border-top: solid black 1px;
 }
 .cues {
-    padding-right: 17px;
     background-color: #ccc;
 }
 .cue-header {
