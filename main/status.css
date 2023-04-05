@@ -1,6 +1,152 @@
-.status {
+.status.container {
     height: 50vh;
     width: 100%;
     background-color: #ccc;
     justify-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.status.preview-container {
+    height: 100%;
+    width: 30%;   
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+}
+.status.preview {
+    width: 0;
+    height: 95%;
+    padding-right: 100%;
+    border: 2px solid #777;
+    background-color: black;
+    border-radius: 15px;
+}
+
+.status.playing {
+    flex-grow: 2;
+    background-color: #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.status.next {
+    flex-grow: 2;
+    background-color: #ccc;
+}
+
+.status.bar, .status.next {
+    width: 400px;
+    height: 40px;
+    border-radius: 20px 20px 0 0;
+    background-color: #777;
+    display: flex;
+    border: 2px solid #777;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+    align-items: center;
+    margin-bottom: -2px;
+}
+
+.status.next {
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+.status.cue {
+    width: 75px;
+    height: 100%;
+    border-right: 1px solid black;
+    position: relative;
+    background-color: #eee;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    left: 0;
+}
+
+.status.description {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    background-color: #eee;
+}
+
+.status.label {
+    width: 75px;
+    height: 100%;
+    position: relative;
+    border-left: 1px solid black;
+    background-color: #83d660;
+    display: flex;
+    align-items: center;
+    right: 0;
+}
+
+.status>p {
+    font-family: Roboto;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.status.joiner {
+    height: 70%;
+    width: 100%;
+    padding: 15px;
+    padding-right: 0;   
+}
+
+.status.seeker {
+    height: 40%;
+    width: 97%;
+    display: flex;
+}
+
+.status.track {
+    height: 100%;
+    width: 100%;
+    background-color: #eee;
+    border-radius: 0 20px 20px 20px;
+    border: 2px solid #777;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.status.line-container {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.status.line {
+    height: 1px;
+    width: 100%;
+    background-color: black;
+    position: relative;
+}
+
+.status.start-cap, .status.end-cap {
+    height: 20px;
+    width: 1px;
+    background-color: black;
+}
+
+.status.scrubber {
+    height: 30px;
+    width: 6px;
+    border-radius: 3px;
+    background-color: #777;
+    position: relative;
+    right: 400px;
+    top: calc(50% - 14px);
+    cursor: pointer;
 }
