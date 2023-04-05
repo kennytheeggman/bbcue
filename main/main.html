@@ -8,277 +8,135 @@
     <link rel="stylesheet" href="./cue_list.css">
     <link rel="stylesheet" href="./document.css">
     <link rel="stylesheet" href="./status.css">
+    <link rel="stylesheet" href="./devices.css">
     <title>Open Show Cue Systems</title>
 </head>
 <body>
     <script src="./script.js"></script>
-    <div class="headers header">    
-        <div class="headers icon"><h1 class="headers">OSCS</h1></div>
-        <div class="headers cue-control">
-            <button class="headers header-controls" id="go">▶<br>Go</button>
-            <button class="headers header-controls" id="pause">⏸<br>Pause</button>
-            <button class="headers header-controls" id="stop">⏹<br>Stop</button>
-            <button class="headers header-controls" id="present" onclick="createWindow()">💻<br>Present</button>
+    <div class="headers container">    
+        <div class="headers icon"><h1 class="headers h1">OSCS</h1></div>
+        <div class="headers controls-container">
+            <button class="headers controls" id="go">▶<br>Go</button>
+            <button class="headers controls" id="pause">⏸<br>Pause</button>
+            <button class="headers controls" id="stop">⏹<br>Stop</button>
+            <button class="headers controls" id="present" onclick="createWindow()">💻<br>Present</button>
         </div>
     </div>
-    <div class="cue_list cues">
-        <div class="cue_list cues-header">
-            <div class="cue_list cue-header" id="cue"><p>Cue</p></div>
-            <div class="cue_list cue-header" id="description"><p>Description</p></div>
-            <div class="cue_list cue-header" id="cue-type"><p>Cue Type</p></div>
-            <div class="cue_list cue-header" id="state"><p>State</p></div>  
-            <div class="cue_list cue-header" id="activation"><p>Activation</p></div>
-            <div class="cue_list cue-header" id="file"><p>File/Info</p></div>
+    <div class="devices container">
+        <select class="devices monitor-dropdown">
+        </select>
+        <select class="devices audio-dropdown">
+        </select>
+        <div class="devices volume-container">
+            <div class="devices volume-selector">
+                <div class="devices track">
+                    <div class="devices meter"></div>
+                    <div class="devices meter"></div>
+                    <div class="devices seeker"></div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="list">
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Start</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
+    <div class="cue-list header-container">
+        <!-- Cue List Header Description -->
+        <div class="cue-list header">
+            <div class="cue-list title"><p>Cue</p></div>
+            <div class="cue-list title"><p>Description</p></div>
+            <div class="cue-list title"><p>Cue Type</p></div>
+            <div class="cue-list title"><p>State</p></div>  
+            <div class="cue-list title"><p>Activation</p></div>
+            <div class="cue-list title"><p>File/Info</p></div>
         </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q1</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
+    </div>
+    <div class="cue-list list">
+        <!-- Cue List -->
+        <div class="cue-list list-cues">
+            <div class="cue-list cue-detail"><p>Start</p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>  
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
         </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q2</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
+        <div class="cue-list list-cues">
+            <div class="cue-list cue-detail"><p>Q1</p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>  
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
         </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q3</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
+        <div class="cue-list list-cues">
+            <div class="cue-list cue-detail"><p>Q2</p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>  
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
         </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q4</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
+        <div class="cue-list list-cues">
+            <div class="cue-list cue-detail"><p>Q3</p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>  
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
         </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q5</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
+        <div class="cue-list list-cues">
+            <div class="cue-list cue-detail"><p>Q4</p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>  
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
         </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q6</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
+        <div class="cue-list list-cues">
+            <div class="cue-list cue-detail"><p>Q5</p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>  
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
         </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q7</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
+        <div class="cue-list list-cues">
+            <div class="cue-list cue-detail"><p>Q6</p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>  
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
         </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q7.1</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
+        <div class="cue-list list-cues">
+            <div class="cue-list cue-detail"><p>Q7</p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>  
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
         </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q8</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
+        <div class="cue-list list-cues">
+            <div class="cue-list cue-detail"><p>Q7.1</p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>  
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
         </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q9</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
+        <div class="cue-list list-cues">
+            <div class="cue-list cue-detail"><p>Q8</p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>  
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
         </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q10</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q11</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q12</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q13</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q14</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q15</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q16</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q17</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q18</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q19</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q20</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q21</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q22</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q23</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q24</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q25</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q26</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q27</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>Q28</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
-        </div>
-        <div class="cue_list list-cues">
-            <div class="cue_list cue-label s1"><p>End</p></div>
-            <div class="cue_list cue-label s2"><p></p></div>
-            <div class="cue_list cue-label s3"><p></p></div>
-            <div class="cue_list cue-label s4"><p></p></div>  
-            <div class="cue_list cue-label s5"><p></p></div>
-            <div class="cue_list cue-label s6"><p></p></div>
+        <div class="cue-list list-cues">
+            <div class="cue-list cue-detail"><p>End</p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>  
+            <div class="cue-list cue-detail"><p></p></div>
+            <div class="cue-list cue-detail"><p></p></div>
         </div>
     </div>
     <div class="status">

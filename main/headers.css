@@ -1,5 +1,5 @@
 
-.header.headers {
+.headers.container {
     height: 70px;
     display: flex;
     flex-direction: row;
@@ -9,14 +9,14 @@
     margin: 0;
 }
 
-h1.headers {
+.headers.h1 {
     font-family: 'Roboto';
     font-weight: 200;
     font-size: xx-large;
     color: black;
     user-select: none;
 }
-.icon.headers {
+.headers.icon {
     background-color: #aaa;
     display: flex;
     align-items: center;
@@ -28,7 +28,7 @@ h1.headers {
     cursor: pointer;
 }
 
-.cue-control.headers {
+.headers.controls-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -37,7 +37,7 @@ h1.headers {
     width: 300px;
 }
 
-.header-controls.headers {
+.headers.controls {
     background-color: #aaa;
     border: none;
     padding: 10px;
@@ -48,10 +48,10 @@ h1.headers {
     cursor: pointer;
     text-align: center;
 }
-.header-controls:hover.headers {
+.headers.header-controls:hover {
     background-color: #999;
 }
-#go.headers {
+.headers#go {
     flex-grow: 2;
 }
 
