@@ -21,6 +21,13 @@ function main() {
   // });
 
   // presenter.loadFile('./presenter/presenter.html');
+
+  const options = new BrowserWindow({
+    title: "Editor",
+    width: 1200,
+    height: 800
+  })
+  options.loadFile('./editor/editor.html')
   
 }
 

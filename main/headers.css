@@ -5,7 +5,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: #ccc;
+    background-color: #f9fbff;
     margin: 0;
 }
 
@@ -17,7 +17,7 @@
     user-select: none;
 }
 .headers.icon {
-    background-color: #aaa;
+    background-color: #e1e5ee;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,7 +38,7 @@
 }
 
 .headers.controls {
-    background-color: #aaa;
+    background-color: #e1e5ee;
     border: none;
     padding: 10px;
     border-radius: 10px;
@@ -48,11 +48,12 @@
     cursor: pointer;
     text-align: center;
 }
-.headers.header-controls:hover {
-    background-color: #999;
+.headers.controls:hover {
+    background-color: #c5c9da;
 }
 .headers#go {
     flex-grow: 2;
+    color: #388e3c;
 }
 
 @font-face {

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- import css files -->
     <link rel="stylesheet" href="./headers.css">
     <link rel="stylesheet" href="./cue_list.css">
     <link rel="stylesheet" href="./document.css">
@@ -12,16 +13,19 @@
     <title>Open Show Cue Systems</title>
 </head>
 <body>
-    <script src="./script.js"></script>
+    <!-- header and controls container -->
+    <!-- home button, go button, pause button, stop button and present button -->
     <div class="headers container">    
         <div class="headers icon"><h1 class="headers h1">OSCS</h1></div>
         <div class="headers controls-container">
-            <button class="headers controls" id="go">▶<br>Go</button>
-            <button class="headers controls" id="pause">⏸<br>Pause</button>
-            <button class="headers controls" id="stop">⏹<br>Stop</button>
-            <button class="headers controls" id="present" onclick="createWindow()">💻<br>Present</button>
+            <button class="headers controls" id="go"><img src="go.png" width="20" height="20"> <br>Go</button>
+            <button class="headers controls" id="pause"><img src="pause.png" width="20" height="20"><br>Pause</button>
+            <button class="headers controls" id="stop"><img src="stop.png" width="20" height="20"><br>Stop</button>
+            <button class="headers controls" id="present"><img src="present.png" width="20" height="20"><br>Present</button>
         </div>
     </div>
+    <!-- device controls container -->
+    <!-- devices volume meter and slider, audio device selector and video device selector -->
     <div class="devices container">
         <select class="devices monitor-dropdown">
         </select>
@@ -37,8 +41,9 @@
             </div>
         </div>
     </div>
+    <!-- cue list header -->
+    <!-- headings for cue list columns -->
     <div class="cue-list header-container">
-        <!-- Cue List Header Description -->
         <div class="cue-list header">
             <div class="cue-list title"><p>Cue</p></div>
             <div class="cue-list title"><p>Description</p></div>
@@ -48,8 +53,9 @@
             <div class="cue-list title"><p>File/Info</p></div>
         </div>
     </div>
+    <!-- cue list -->
+    <!-- list of cues for each column -->
     <div class="cue-list list">
-        <!-- Cue List -->
         <div class="cue-list list-cues">
             <div class="cue-list cue-detail"><p>Start</p></div>
             <div class="cue-list cue-detail"><p></p></div>
@@ -139,6 +145,8 @@
             <div class="cue-list cue-detail"><p></p></div>
         </div>
     </div>
+    <!-- bottom status bar -->
+    <!-- window preview, currently playing cue and next cue -->
     <div class="status container">
         <div class="status preview-container">
             <div class="status preview"></div>
@@ -148,26 +156,30 @@
                 <div class="status bar">
                     <div class="status cue"><p>Q6</p></div>
                     <div class="status description"><p>Bird Call</p></div>
-                    <div class="status label"><p>Playing</p></div>
+                    <div class="status label first"><p>Playing</p></div>
                 </div>
                 <div class="status seeker">
                     <div class="status track">
-                        <!-- <canvas id="track" width="600" height="300"></canvas> -->
                         <div class="status line-container">
+                            <div class="status time-since"><p>0:01:00</p></div>
                             <div class="status start-cap"></div>
-                            <div class="status line"></div>
+                            <div class="status line">
+                                <div class="status scrubber"></div>
+                            </div>
                             <div class="status end-cap"></div>
+                            <div class="status time-to"><p>-1:21:17</p></div>
                         </div>
                     </div>
-                    <div class="status scrubber"></div>
                 </div>
                 <div class="status next">
                     <div class="status cue"><p>Q7</p></div>
                     <div class="status description"><p>Bird Call 2</p></div>
-                    <div class="status label"><p>Next</p></div>
+                    <div class="status label second"><p>Next</p></div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- import javascript files -->
+    <script src="./script.js"></script>
 </body>
 </html>
