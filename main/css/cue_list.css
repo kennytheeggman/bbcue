@@ -27,8 +27,6 @@
     justify-content: space-between;
     align-items: center;
     border-top: 4px solid #e1e5ee;
-    /* border-bottom: solid black 3px; */
-    /* border-top: solid black 1px; */
 }
 .cue-list.header-container {
     background-color: #fff;
@@ -106,13 +104,4 @@
     font-weight: 300;
     text-align: center;
     align-self: center;
-}
-
-@font-face {
-    font-family: 'Roboto';
-    src: url('../fonts/Roboto-Medium.ttf');
-}
-@font-face {
-    font-family: 'Delicious Handrawn';
-    src: url('../fonts/DeliciousHandrawn-Regular.ttf');
 }

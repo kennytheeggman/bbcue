@@ -5,11 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- import css files -->
-    <link rel="stylesheet" href="./headers.css">
-    <link rel="stylesheet" href="./cue_list.css">
-    <link rel="stylesheet" href="./document.css">
-    <link rel="stylesheet" href="./status.css">
-    <link rel="stylesheet" href="./devices.css">
+    <link rel="stylesheet" href="./css/headers.css">
+    <link rel="stylesheet" href="./css/cue_list.css">
+    <link rel="stylesheet" href="./css/document.css">
+    <link rel="stylesheet" href="./css/status.css">
+    <link rel="stylesheet" href="./css/devices.css">
+    <style>
+        @font-face {
+            font-family: 'Roboto';
+            src: url('../fonts/Roboto-Medium.ttf');
+        }
+        @font-face {
+            font-family: 'Delicious Handrawn';
+            src: url('../fonts/DeliciousHandrawn-Regular.ttf');
+        }
+    </style>
     <title>Open Show Cue Systems</title>
 </head>
 <body>
@@ -18,10 +28,10 @@
     <div class="headers container">    
         <div class="headers icon"><h1 class="headers h1">OSCS</h1></div>
         <div class="headers controls-container">
-            <button class="headers controls" id="go"><img src="go.png" width="20" height="20"> <br>Go</button>
-            <button class="headers controls" id="pause"><img src="pause.png" width="20" height="20"><br>Pause</button>
-            <button class="headers controls" id="stop"><img src="stop.png" width="20" height="20"><br>Stop</button>
-            <button class="headers controls" id="present"><img src="present.png" width="20" height="20"><br>Present</button>
+            <button class="headers controls" id="go"><img src="./assets/go.png" width="20" height="20"> <br>Go</button>
+            <button class="headers controls" id="pause"><img src="./assets/pause.png" width="20" height="20"><br>Pause</button>
+            <button class="headers controls" id="stop"><img src="./assets/stop.png" width="20" height="20"><br>Stop</button>
+            <button class="headers controls" id="present"><img src="./assets/present.png" width="20" height="20"><br>Present</button>
         </div>
     </div>
     <!-- device controls container -->
