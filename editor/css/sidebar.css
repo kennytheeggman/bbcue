@@ -1,5 +1,60 @@
 .sidebar.container {
     height: 100%;
-    flex-grow: 1;
-    background-color: #ccc;
+    width: 26%;
+    background-color: white;
+    border-right: 4px solid #e1e5ee;
+    /* box-shadow: 0 ; */
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.sidebar.box-shadow {
+    height: 10px;
+    margin-top: -10px;
+    width: 100%;
+    box-shadow: 0 5px 10px #e1e5ee;
+    z-index: 10;
+}
+
+.sidebar.scroll-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.sidebar.scroll-container::-webkit-scrollbar {
+    width: 13px;
+}
+.sidebar.scroll-container::-webkit-scrollbar-thumb {
+    background-color: rgba(118, 123, 145, 0.3);
+    border-radius: 10px;
+}
+.sidebar.scroll-container::-webkit-scrollbar-thumb:hover, .list::-webkit-scrollbar-thumb:active {
+    background-color: rgb(152, 156, 171);
+    border-radius: 10px;
+}
+
+.sidebar.cue>p {
+    padding-left: 25px;
+    font-family: Roboto;
+    white-space: nowrap;
+    color: #2996ff;
+}
+.sidebar.cue {
+    height: 40px;
+    margin-right: -20px;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.sidebar.cue:nth-child(even) {
+    background-color: #f4f6fb;
+}
+
+.sidebar.cue.selected {
+    background-color: #2996ff;
+}
+.sidebar.cue.selected>p {
+    color: white
 }

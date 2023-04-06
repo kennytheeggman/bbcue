@@ -1,5 +1,69 @@
-.headers.header {
+
+.headers.container {
+    height: 70px;
     width: 100%;
-    flex-grow: 1;
-    background-color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9fbff;
+    border-bottom: 4px solid #e1e5ee;
+    /* z-index: 10; */
+    /* box-shadow: 0 5px 10px #e1e5ee; */
+    margin: 0;
+}
+
+.headers.h1 {
+    font-family: 'Roboto';
+    font-weight: 200;
+    font-size: xx-large;
+    color: black;
+    user-select: none;
+}
+.headers.icon {
+    background-color: #e1e5ee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.headers.controls-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    width: 300px;
+}
+
+.headers.controls {
+    background-color: #e1e5ee;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    width: 60px;
+    margin: 5px;
+    font-family: Roboto;
+    cursor: pointer;
+    text-align: center;
+}
+.headers.controls:hover {
+    background-color: #c5c9da;
+}
+.headers#add {
+    flex-grow: 2;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Medium.ttf');
+}
+@font-face {
+    font-family: 'Delicious Handrawn';
+    src: url('../fonts/DeliciousHandrawn-Regular.ttf');
 }
