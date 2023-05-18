@@ -12,22 +12,7 @@ function main() {
     }
   });
 
-  main.loadFile('./main/main.html');
-
-  // const presenter = new BrowserWindow({
-  //   title: "OSCS Presenter View",
-  //   frame: false,
-  //   fullscreen: true
-  // });
-
-  // presenter.loadFile('./presenter/presenter.html');
-
-  const options = new BrowserWindow({
-    title: "Editor",
-    width: 1200,
-    height: 800
-  })
-  options.loadFile('./editor/editor.html')
+  // main.loadFile('./main/main.html');
   
 }
 
