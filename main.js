@@ -12,6 +12,9 @@ function main() {
     }
   });
 
+  const contents = main.webContents;
+  console.log(contents.undo);
+
   // main.loadFile('./main/main.html');
   
 }
