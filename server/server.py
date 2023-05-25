@@ -24,6 +24,7 @@ def body(params):
 <body>
     {params["header"]}
     <p>{params["id"]}</p>
+    <i>{params["id"]}</i>
 </body>
 </html>
     """
