@@ -43,14 +43,26 @@ class Component:
             # insert new key
             cls.cfs |= {path: [contents]}
     
+    def add_if(self, contents, path):
+
+        if path in self.ifs:
+            
+            # add file contents to the instance_file dictionary dynamically
+            self.ifs[path].append(contents)
+
+        else:
+
+            # insert new key
+            self.ifs |= {path: [contents]}
+    
     @classmethod
     @property
     def class_files(cls):
 
-        # operate on oa copy of the class_file dictionary
+        # operate on a copy of the class_file dictionary
         class_file_copy = dict(cls.cfs)
 
-        # for every class
+        # for every path
         for path in class_file_copy:
 
             combined = ""
@@ -65,63 +77,65 @@ class Component:
 
         # return the rendered files
         return class_file_copy
-    
-    def add_if(self, contents, path):
-
-        if path in self.ifs:
-
-            self.ifs[path].append(contents)
-
-        else:
-
-            self.ifs |= {path: [contents]}
 
     @property
     def instance_files(self):
 
+        # operate on a copy of the class_file dictionary
         instance_file_copy = dict(self.ifs)
 
+        # for every path
         for path in instance_file_copy:
 
             combined = ""
 
+            # combine the rendered files into one file
             for content in instance_file_copy[path]:
 
+                # call content function with parameters
                 combined += content(self.params)
 
+            # write the combined file to the copy
             instance_file_copy[path] = MockStr(combined)
         
+        # return the rendered files
         return instance_file_copy
     
     @classmethod
     @property
     def files(cls):
 
-        combined_instance_files = cls.class_files
+        # get class files
+        combined_files = cls.class_files
 
+        # combine class files and instance files
         for _, objs in cls._registry.items():
                 
             for obj in objs:
 
                 for path, content in obj.instance_files.items():
+                    
+                    # merge instance files one at a time with class files
+                    if path in combined_files:
 
-                    if path in combined_instance_files:
-
-                        combined_instance_files[path] += content
+                        combined_files[path] += content
 
                     else:
 
                         combined_instance_files |= {path: content}
         
-        for path, content in combined_instance_files.items():
+        # set everything to a mock string, so the routing works properly
+        for path, content in combined_files.items():
 
-            combined_instance_files[path] = MockStr(content)        
+            combined_files[path] = MockStr(content)        
 
+        # return combined files
         return combined_instance_files
 
 
 class MockStr(str):
 
+    # fake string class that returns itself when called
     def __call__(self):
 
         return self
@@ -143,6 +157,7 @@ def class_file(cls, path):
 
 def instance_file(inst, path):
 
+    # add an instance_file using the add_if method
     def wrapper(func):
 
         inst.add_if(func, path)
