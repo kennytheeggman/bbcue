@@ -1,38 +1,63 @@
-from ui.component import component
+from ui.component import Component, component, class_file, instance_file
 from flask import Flask
-
+from uuid import uuid4
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return str(body("body", {"header": header("header", {"msg": "testing"})}))
-
-
-
 @component
-def body(params):
+def body(props):
     return f"""
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    {props["head"]}
 </head>
 <body>
-    {params["header"]}
-    <p>{params["id"]}</p>
-    <i>{params["id"]}</i>
+    {props["body"]}
 </body>
 </html>
     """
 
 @component
-def header(params):
+def slider(props):
     return f"""
-<h1>
-    {params["msg"]} {params["id"]}
-</h1>
+<div id={props["id"]}>
+<input type="range" min="1" max="100" value="{props["value"]}">
+</div>
     """
+
+@component
+def header(props):
+    return """
+<script src="/script.js"></script>
+<script src="/script1.js"></script>
+    """
+
+@class_file(slider, "/script.js")
+def src():
+    return """
+console.log("test");
+    """
+@class_file(slider, "/script1.js")
+def src2():
+    return """
+console.log("1");
+    """
+
+s = slider({"value": 100})
+h = header({})
+b = body({"head": h, "body": s})
+
+@app.route("/")
+def home():
+    return str(b)
+
+@instance_file(s, "/script.js")
+def src3(props):
+    return f"""
+console.log("success! {props["id"]}");
+    """
+
+for url, content in Component.files.items():
+
+    app.add_url_rule(url, str(uuid4()), view_func=content)
