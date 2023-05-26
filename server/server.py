@@ -60,4 +60,4 @@ console.log("success! {props["id"]}");
 
 for url, content in Component.files.items():
 
-    app.add_url_rule(url, str(uuid4()), view_func=content)
+    app.add_url_rule(url, view_func=content)
