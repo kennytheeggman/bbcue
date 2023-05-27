@@ -1,5 +1,4 @@
 from uuid import uuid4
-from flask import Response
 
 
 class Component:
@@ -51,7 +50,7 @@ class Component:
         # add object to registry
         if type(self) in self._registry:
 
-            self._registry[type(self)].append((self, type(self)))
+            self._registry[type(self)].append(self)
         
         else:
 
@@ -309,9 +308,7 @@ class Component:
 
             if path in Component._file_resps:
                 
-                def wrapper():
-
-                    return Component._file_resps[path](Component.files[path])
+                copy[path] = Component._file_resps[path](Component.files[path])
 
             else:
 
@@ -319,30 +316,11 @@ class Component:
                     
                     return Response(Component.files[path])
         
-            wrapper.__name__ = str(uuid4())
+                wrapper.__name__ = str(uuid4())
 
-            copy[path] = wrapper
+                copy[path] = wrapper
         
         return copy
-
-
-class MockStr(str):
-
-    """
-    String class encapsulator, such that a call to an instantiated object yields its string value, and its __name__ property yields itself
-    
-    """
-
-    # fake string class that returns itself when called
-    def __call__(self):
-
-        return self
-    
-    # when name is referenced, also return itself
-    @property
-    def __name__(self):
-
-        return self
 
     
 def component(params):
