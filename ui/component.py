@@ -1,4 +1,5 @@
 from uuid import uuid4
+from flask import Response
 
 
 class Component:
@@ -14,11 +15,17 @@ class Component:
 
         params (dict) - Same as the initialization argument. If the "id" key exists in parameters, it is replaced with a randomly generated UUID. Otherwise, the "id" key is set to a randomly generated UUID.
 
-        class_files (dict) - The keys in this variable are the class file paths to which contents have been added, and the values are the concatenated contents. Class files are class properties, stored universally in the class. 
+        class_files (class property (dict)) - The keys in this variable are the class file paths to which contents have been added, and the values are the concatenated contents. Class files are class properties, stored universally in the class. 
+
+        class_files_response (class property (dict)) - Identical to class_files except each file content has been processed to become a Response object, for response header and type support
 
         instance_files (dict) - The keys are the instance file paths to which contents have been added, and the values are the concatenated contents. Instance files can differ between instances, and are called with the instance parameters.
 
-        files (dict) - This dictionary is a concatenation of the class files and all the instance files
+        instance_files_response (dict) - Identical to instance_files except each file content has been processed to become a Response object, for response header and type support
+
+        files (class property (dict)) - This dictionary is a concatenation of the class files and all the instance files
+
+        files_response (class property (dict)) - Identical to files except each file content has been processed to become a Response object, for response header and type support
 
         renderer (function) - Function that takes in self.params and outputs rendered HTML text
 
@@ -187,25 +194,24 @@ class Component:
     @property
     def class_files_response(cls):
 
+        """
+        Accessor for class_files_response property
+        """
+
         copy = {}
 
+        # for each class file
         for path in Component.class_files:
-
+            
+            # if the path has a response function, use the response function
             if path in Component._file_resps:
                 
-                def wrapper():
+                copy[path] = Component._file_resps[path](Component.class_files[path])
 
-                    return Component._file_resps[path](Component.class_files[path])
-
+            # otherwise, encapsulate in a default response function
             else:
 
-                def wrapper():
-                    
-                    return Response(Component.class_files[path])
-        
-            wrapper.__name__ = str(uuid4())
-
-            copy[path] = wrapper
+                copy[path] = lambda: Response(Component.class_files[path])
         
         return copy
 
@@ -240,25 +246,24 @@ class Component:
     @property
     def instance_files_response(self):
 
+        """
+        Accessor for instance_files_response property
+        """
+
         copy = {}
 
+        # for each instance file
         for path in self.instance_files:
-
+            
+            # if the path has a response function, use the response function
             if path in Component._file_resps:
                 
-                def wrapper():
+                copy[path] = Component._file_resps[path](self.instance_files[path])
 
-                    return Component._file_resps[path](self.instance_files[path])
-
+            # otherwise use the default response function
             else:
 
-                def wrapper():
-                    
-                    return Response(self.instance_files[path])
-        
-            wrapper.__name__ = str(uuid4())
-
-            copy[path] = wrapper
+                copy[path] = lambda: Response(self.instance_files[path])
         
         return copy
     
@@ -302,23 +307,24 @@ class Component:
     @property
     def files_response(cls):
 
+        """
+        Accessor for files_response property
+        """
+
         copy = {}
-
+        
+        # for each file
         for path in Component.files:
-
+            
+            # if the path has a response function, use the response function
             if path in Component._file_resps:
                 
                 copy[path] = Component._file_resps[path](Component.files[path])
-
+            
+            # otherwise use the default response function
             else:
 
-                def wrapper():
-                    
-                    return Response(Component.files[path])
-        
-                wrapper.__name__ = str(uuid4())
-
-                copy[path] = wrapper
+                copy[path] = lambda: Response(Component.files[path])
         
         return copy
 
@@ -395,6 +401,19 @@ def instance_file(inst, path):
 
 def file(path):
 
+    """
+    Decorator to add a file to the request space
+
+    Parameters: 
+
+        path (string) - String to the path, corresponding to a key
+
+    Returns:
+
+        function - A function that accepts the function that maps from file content to Response object, and adds it to the list of response functions
+    """
+
+    # add the function to the response functions list
     def wrapper(func):
 
         Component._file_resps |= {path: func}

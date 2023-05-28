@@ -1,1 +1,1 @@
-from .ui import test
+from .ui import test_component
