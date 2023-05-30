@@ -106,6 +106,8 @@ class Component:
 
         """
 
+        print(cls)
+
         if cls in cls._cfs:
 
             if path in cls._cfs[cls]:
@@ -330,98 +332,107 @@ class Component:
         
         return copy
 
-    
-def component(params):
+    @classmethod
+    def component(cls, params):
 
-    """
-    Decorator to create a component out of a rendering function. 
+        """
+        Decorator to create a component out of a rendering function. 
 
-    Parameters:
+        Parameters:
 
-        params (dict) - The dictionary specifying the class parameters for the new class inheriting from Component
+            params (dict) - The dictionary specifying the class parameters for the new class inheriting from Component
 
-    Returns:
+        Returns:
 
-        function - A function that creates a class inheriting from Component with the same name as the calling function, and predefined renderer and class parameters
+            function - A function that creates a class inheriting from Component with the same name as the calling function, and predefined renderer and class parameters
 
-    """
+        """
 
-    def wrapper(func):
+        print(cls)
 
-        # create a new type that inherits from Component
-        return type(func.__name__, (Component,), {"renderer": staticmethod(func), "_cparams": classmethod(property(lambda self: params))})
-    
-    return wrapper
+        def wrapper(func):
 
-
-def class_file(cls, path):
-
-    """
-    Decorator to add a class file to a class out of a rendering function
-
-    Parameters:
-
-        path (str) - The path to which the file contents should be appended
-
-    Returns:
-
-        function - A function that accepts the rendering function, which accepts zero parameters, and adds it to the class_file path system
-    
-    """
-
-    # add a class_file using the add_cf classmethod
-    def wrapper(func):
-
-        cls._add_cf(func, path)
-    
-    return wrapper
+            # create a new type that inherits from Component
+            return type(func.__name__, (cls,), {"renderer": staticmethod(func), "_cparams": params})
+        
+        return wrapper
 
 
-def instance_file(inst, path):
+    @staticmethod
+    def class_file(cls, path):
 
-    """
-    Decorator to add an instance file to an instance out of a rendering function
+        """
+        Decorator to add a class file to a class out of a rendering function
 
-    Parameters:
+        Parameters:
 
-        inst (obj) - The object to which an instance file should be added
+            path (str) - The path to which the file contents should be appended
 
-        path (str) - The path to which the file contents should be appended
+        Returns:
 
-    Returns:
+            function - A function that accepts the rendering function, which accepts zero parameters, and adds it to the class_file path system
+        
+        """
 
-        function - A function that accepts the rendering function, which accepts parameters of the same type as Component.params, and adds it to the instance_file path system
-    
-    """
+        # add a class_file using the add_cf classmethod
+        def wrapper(func):
 
-    # add an instance_file using the add_if method
-    def wrapper(func):
+            cls._add_cf(func, path)
+        
+        return wrapper
 
-        inst._add_if(func, path)
 
-    return wrapper
+    @staticmethod
+    def instance_file(inst, path):
 
-def file(path):
+        """
+        Decorator to add an instance file to an instance out of a rendering function
 
-    """
-    Decorator to add a file to the request space
+        Parameters:
 
-    Parameters: 
+            inst (obj) - The object to which an instance file should be added
 
-        path (string) - String to the path, corresponding to a key
+            path (str) - The path to which the file contents should be appended
 
-    Returns:
+        Returns:
 
-        function - A function that accepts the function that maps from file content to Response object, and adds it to the list of response functions
-    """
+            function - A function that accepts the rendering function, which accepts parameters of the same type as Component.params, and adds it to the instance_file path system
+        
+        """
 
-    # add the function to the response functions list
-    def wrapper(func):
+        # add an instance_file using the add_if method
+        def wrapper(func):
 
-        Component._file_resps |= {path: func}
+            inst._add_if(func, path)
 
-    return wrapper
+        return wrapper
+
+    @staticmethod
+    def file(path):
+
+        """
+        Decorator to add a file to the request space
+
+        Parameters: 
+
+            path (string) - String to the path, corresponding to a key
+
+        Returns:
+
+            function - A function that accepts the function that maps from file content to Response object, and adds it to the list of response functions
+        """
+
+        # add the function to the response functions list
+        def wrapper(func):
+
+            Component._file_resps |= {path: func}
+
+        return wrapper
 
 alphabet = string.ascii_lowercase
 def rid():
     return ''.join(random.choices(alphabet, k=8))
+
+def create_component_context():
+
+    return type(rid(), tuple(), dict(Component.__dict__))

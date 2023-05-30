@@ -1,10 +1,13 @@
 import re 
 from mimetypes import guess_type
 
-from .component import component, class_file, file, rid
+from .component import create_component_context, rid
 from flask import Response
 
 class RegexComponent:
+
+	component = create_component_context()
+	component2 = create_component_context()
 
 	def __init__(self, regex, match_props=r'\$"(.*?)"', match_params=r'\&"(.*?)"', repl_props=r'{props[\1]}', repl_params=r'{params[\1]}'):
 		
@@ -79,7 +82,7 @@ class RegexComponent:
 		for name in files:
 			
 			# create a classfile with correct contents
-			@class_file(component, f"/{path}/{name}")
+			@cls.component.class_file(component, f"/{path}/{name}")
 			def f(props):
 
 				unformatted = str(RegexComponent.from_file(join(path, name)))
@@ -87,7 +90,7 @@ class RegexComponent:
 				return str(RegexComponent.from_file(join(path, name))).format(props = pr | props)
 			
 			# infer mimetype by file extension
-			@file(f"/{path}/{name}")
+			@cls.component2.file(f"/{path}/{name}")
 			def f_ext(content):
 
 				resp = Response(content)
@@ -114,7 +117,7 @@ class RegexComponent:
 	def get_component(self, params):
 
 		# create a component with parameters
-		@component(params)
+		@RegexComponent.component.component(params)
 		def comp(params, props):
 
 			return str(self).format(props=props, params=params)
@@ -125,3 +128,7 @@ class RegexComponent:
 class GroupException(Exception):
 
 	pass
+
+def get_regex_component_context():
+
+	return type(rid(), tuple(), dict(RegexComponent.__dict__))

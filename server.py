@@ -1,8 +1,12 @@
-from ui.component import Component
-from ui.regex import RegexComponent
+from ui.component import Component, create_component_context
+from ui.regex import get_regex_component_context
 from flask import Flask, Response
 
 app = Flask(__name__)
+
+RegexComponent = get_regex_component_context()
+
+print(RegexComponent.component)
 
 
 body = RegexComponent.from_folder("components/body", {})
@@ -22,6 +26,7 @@ def home():
     resp.headers['Content-Type'] = "text/html"
     return resp
 
+# print(Component.__init__)
 
 for url, content in Component.files_response.items():
 
