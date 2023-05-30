@@ -1,1 +1,1 @@
-from . import component
+from . import component, regex

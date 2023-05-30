@@ -1,0 +1,29 @@
+div.$"div class" {
+
+    height: 30px;
+    width: 100%;
+
+}
+
+input.$"input class" {
+
+    -webkit-appearance: none;
+    appearance: none;
+    height: 1px;
+    width: 100%;
+    background-color: #767b91; 
+    position: relative;
+
+}
+
+input.$"input class"::-webkit-slider-thumb {
+
+    -webkit-appearance: none;
+    appearance: none;
+    height: 30px;
+    width: 6px;
+    border-radius: 3px;
+    background-color: #767b91;
+    cursor: pointer;
+
+}

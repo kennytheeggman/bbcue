@@ -1,5 +1,7 @@
 from uuid import uuid4
 from flask import Response
+import string
+import random
 
 
 class Component:
@@ -419,3 +421,7 @@ def file(path):
         Component._file_resps |= {path: func}
 
     return wrapper
+
+alphabet = string.ascii_lowercase
+def rid():
+    return ''.join(random.choices(alphabet, k=8))
