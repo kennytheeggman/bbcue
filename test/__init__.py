@@ -1,1 +1,0 @@
-from .ui import test_component

@@ -1,1 +1,1 @@
-from . import component, regex
+from .components import component, component_context
